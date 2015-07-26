@@ -39,7 +39,8 @@ public class CalorieCounterFrame extends JFrame
     private ActionListener bfBtnListener, lcBtnListener, dnrBtnListener, 
         snBtnListener, resetListener = new ResetListener();
         
-    private FocusListener bfTxtListener, lcTxtListener, dnrTxtListener, snTxtListener;
+    private FocusListener bfTxtListener = new TextListener(breakfastValue), lcTxtListener = new TextListener(lunchValue), 
+    dnrTxtListener = new TextListener(dinnerValue), snTxtListener = new TextListener(snacksValue);
     
     public CalorieCounterFrame(String title) {
         this.setTitle(title);
@@ -59,13 +60,13 @@ public class CalorieCounterFrame extends JFrame
                     .addComponent(breakfastLabel)
                     .addComponent(lunchLabel)
                     .addComponent(dinnerLabel)
-                    .addComponent(snacksLabel)
-                    .addComponent(totalLabel))
+                    .addComponent(snacksLabel))
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addComponent(breakfastValue)
                     .addComponent(lunchValue)
                     .addComponent(dinnerValue)
-                    .addComponent(snacksValue))
+                    .addComponent(snacksValue)
+                    .addComponent(totalLabel))
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addComponent(breakfastButton)
                     .addComponent(lunchButton)
@@ -138,12 +139,19 @@ public class CalorieCounterFrame extends JFrame
             }
         });
         
-        
+        /* un-comment if you want text fields to show as un-editable when not selected.
+
         breakfastValue.addFocusListener(bfTxtListener);
+        breakfastValue.setEditable(false);
         lunchValue.addFocusListener(lcTxtListener);
+        lunchValue.setEditable(false);
         dinnerValue.addFocusListener(dnrTxtListener);
+        dinnerValue.setEditable(false);
         snacksValue.addFocusListener(snTxtListener);
-        resetButton.addActionListener(resetListener);
+        snacksValue.setEditable(false);
+        */
+       
+        resetButton.addActionListener(resetListener); 
     }
     
     
