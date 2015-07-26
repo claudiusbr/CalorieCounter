@@ -37,7 +37,7 @@ public class CalorieCounterFrame extends JFrame
     protected JLabel totalLabel = new JLabel("Total: "+CalorieCounter.total);
 
     private ActionListener bfBtnListener, lcBtnListener, dnrBtnListener, 
-        snBtnListener, resetListener;
+        snBtnListener, resetListener = new ResetListener();
         
     private FocusListener bfTxtListener, lcTxtListener, dnrTxtListener, snTxtListener;
     
@@ -45,7 +45,6 @@ public class CalorieCounterFrame extends JFrame
         this.setTitle(title);
         this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
         JPanel panel = new JPanel();
-        createActionListeners();
         addActionListeners();
         panel.add(breakfastLabel);
         panel.add(breakfastValue);
@@ -60,55 +59,54 @@ public class CalorieCounterFrame extends JFrame
     }
     
     /**
-     * Creates the action and focus listener objects.
-     */
-    public void createActionListeners() {
-        bfBtnListener = new CalorieListener(CalorieCounter.breakfast,breakfastValue);
-        bfTxtListener = new TextListener(breakfastValue);
-        lcBtnListener = new CalorieListener(CalorieCounter.lunch,lunchValue);
-        lcTxtListener = new TextListener(lunchValue);
-        dnrBtnListener = new CalorieListener(CalorieCounter.dinner,dinnerValue);
-        dnrTxtListener = new TextListener(dinnerValue);
-        snBtnListener = new CalorieListener(CalorieCounter.snacks,snacksValue);
-        snTxtListener = new TextListener(snacksValue);
-        resetListener = new ResetListener();
-    }
-    
-    /**
      * adds action and focus listener objects to the frame buttons.
      */
     public void addActionListeners() {
-        breakfastButton.addActionListener(bfBtnListener);
+        breakfastButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                int value = Integer.parseInt(breakfastValue.getText());
+                CalorieCounter.breakfast.setTotal(value);
+                CalorieCounter.total += value;
+                breakfastValue.setText(Integer.toString(CalorieCounter.breakfast.getTotal()));
+                totalLabel.setText("Total: "+CalorieCounter.total);
+            }
+        });
+        lunchButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                int value = Integer.parseInt(lunchValue.getText());
+                CalorieCounter.lunch.setTotal(value);
+                CalorieCounter.total += value;
+                lunchValue.setText(Integer.toString(CalorieCounter.lunch.getTotal()));
+                totalLabel.setText("Total: "+CalorieCounter.total);
+            }
+        });
+        dinnerButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                int value = Integer.parseInt(dinnerValue.getText());
+                CalorieCounter.dinner.setTotal(value);
+                CalorieCounter.total += value;
+                dinnerValue.setText(Integer.toString(CalorieCounter.dinner.getTotal()));
+                totalLabel.setText("Total: "+CalorieCounter.total);
+            }
+        });
+        snacksButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                int value = Integer.parseInt(snacksValue.getText());
+                CalorieCounter.snacks.setTotal(value);
+                CalorieCounter.total += value;
+                snacksValue.setText(Integer.toString(CalorieCounter.snacks.getTotal()));
+                totalLabel.setText("Total: "+CalorieCounter.total);
+            }
+        });
+        
+        
         breakfastValue.addFocusListener(bfTxtListener);
-        lunchButton.addActionListener(lcBtnListener);
         lunchValue.addFocusListener(lcTxtListener);
-        dinnerButton.addActionListener(dnrBtnListener);
         dinnerValue.addFocusListener(dnrTxtListener);
-        snacksButton.addActionListener(snBtnListener);
         snacksValue.addFocusListener(snTxtListener);
         resetButton.addActionListener(resetListener);
     }
     
-    /**
-     * event listener for the buttons used to add the meal values to the Food objects
-     */
-    class CalorieListener implements ActionListener {
-        Food meal;
-        JTextField text;
-        
-        public CalorieListener (Food meal, JTextField text) {
-            this.meal = meal;
-            this.text = text;
-        }
-        
-        public void actionPerformed(ActionEvent e) {
-            int value = Integer.parseInt(text.getText());
-            meal.setTotal(value);
-            CalorieCounter.total += value;
-            text.setText(Integer.toString(meal.getTotal()));
-            totalLabel.setText("Total: "+CalorieCounter.total);
-        }
-    }
     
     /**
      * focus listener to change state of text field
@@ -142,13 +140,11 @@ public class CalorieCounterFrame extends JFrame
         }
         
         public void resetTextFields() {
-            createActionListeners();
             totalLabel.setText(Integer.toString(CalorieCounter.total));
             breakfastValue.setText("0");
             lunchValue.setText("0");
             dinnerValue.setText("0");
             snacksValue.setText("0");
-            System.out.println(CalorieListener.this.bfBtnListener.meal.getTotal());
         }
     }
 }
