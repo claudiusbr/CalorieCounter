@@ -16,8 +16,7 @@ import java.awt.event.WindowEvent;
  *  .1 - changed 'option' to string: trying to control exceptions by limiting value of  to characters '1,2,3,4' contained in a String;
  *  .2 - modified way of clearing totals from object references: now done by using the no argument constructor of class Food;
  *  .3 - array 'storage' no longer to be used to store values before saving. Printing values from instances of Food directly to save files instead.
- * Next steps: 
- *  Learn how to develop a user interface;
+ * 26/07/15 - v5: added GUI and modified app structure to accomodate a GUI.
  */
 
 public class CalorieCounter {

@@ -22,7 +22,7 @@ public class CalorieCounterFrame extends JFrame
         dinnerButton = new JButton("+"), snacksButton = new JButton("+"), 
         resetButton = new JButton("Reset");
 
-    private final int FRAME_WIDTH = 300, FRAME_HEIGHT = 450, FIELD_WIDTH = 4;
+    private final int FRAME_WIDTH = 300, FRAME_HEIGHT = 300, FIELD_WIDTH = 4;
     
     
     protected JTextField breakfastValue = new JTextField(Integer.toString(CalorieCounter.breakfast.getTotal()),FIELD_WIDTH);
@@ -45,16 +45,55 @@ public class CalorieCounterFrame extends JFrame
         this.setTitle(title);
         this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
         JPanel panel = new JPanel();
+        GroupLayout layout = new GroupLayout(panel);
+        layout.setAutoCreateGaps(true);
+        layout.setAutoCreateContainerGaps(true);
+
+        panel.setLayout(layout);
+        
         addActionListeners();
-        panel.add(breakfastLabel);
-        panel.add(breakfastValue);
-        panel.add(breakfastButton);
-        
-        
-        
-        panel.add(totalLabel);
-        panel.add(resetButton);
-        
+
+        layout.setHorizontalGroup(
+            layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(breakfastLabel)
+                    .addComponent(lunchLabel)
+                    .addComponent(dinnerLabel)
+                    .addComponent(snacksLabel)
+                    .addComponent(totalLabel))
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(breakfastValue)
+                    .addComponent(lunchValue)
+                    .addComponent(dinnerValue)
+                    .addComponent(snacksValue))
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(breakfastButton)
+                    .addComponent(lunchButton)
+                    .addComponent(dinnerButton)
+                    .addComponent(snacksButton)
+                    .addComponent(resetButton))
+        );
+        layout.setVerticalGroup(
+            layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(breakfastLabel)
+                    .addComponent(breakfastValue)
+                    .addComponent(breakfastButton))
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(lunchLabel)
+                    .addComponent(lunchValue)
+                    .addComponent(lunchButton))
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(dinnerLabel)
+                    .addComponent(dinnerValue)
+                    .addComponent(dinnerButton))
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(snacksLabel)
+                    .addComponent(snacksValue)
+                    .addComponent(snacksButton))
+                .addComponent(totalLabel)
+                .addComponent(resetButton)
+        );
         add(panel);
     }
     
@@ -140,7 +179,7 @@ public class CalorieCounterFrame extends JFrame
         }
         
         public void resetTextFields() {
-            totalLabel.setText(Integer.toString(CalorieCounter.total));
+            totalLabel.setText("Total: "+Integer.toString(CalorieCounter.total));
             breakfastValue.setText("0");
             lunchValue.setText("0");
             dinnerValue.setText("0");
