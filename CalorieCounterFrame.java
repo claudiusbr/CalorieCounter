@@ -113,23 +113,21 @@ public class CalorieCounterFrame extends JFrame
      * adds action and focus listener objects to the frame buttons.
      */
     public void addActionListeners() {
-        breakfastButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        breakfastButton.addActionListener((ActionEvent e) -> {
                 int value = Integer.parseInt(breakfastValue.getText());
                 CalorieCounter.breakfast.setTotal(value);
                 CalorieCounter.total += value;
                 breakfastValue.setText(Integer.toString(CalorieCounter.breakfast.getTotal()));
                 totalLabel.setText("Total: "+CalorieCounter.total);
-            }
+            
         });
-        lunchButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        lunchButton.addActionListener((ActionEvent e) -> {
                 int value = Integer.parseInt(lunchValue.getText());
                 CalorieCounter.lunch.setTotal(value);
                 CalorieCounter.total += value;
                 lunchValue.setText(Integer.toString(CalorieCounter.lunch.getTotal()));
                 totalLabel.setText("Total: "+CalorieCounter.total);
-            }
+            
         });
         dinnerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
