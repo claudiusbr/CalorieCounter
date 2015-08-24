@@ -129,14 +129,13 @@ public class CalorieCounterFrame extends JFrame
                 totalLabel.setText("Total: "+CalorieCounter.total);
             
         });
-        dinnerButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        dinnerButton.addActionListener((ActionEvent e) -> {
                 int value = Integer.parseInt(dinnerValue.getText());
                 CalorieCounter.dinner.setTotal(value);
                 CalorieCounter.total += value;
                 dinnerValue.setText(Integer.toString(CalorieCounter.dinner.getTotal()));
                 totalLabel.setText("Total: "+CalorieCounter.total);
-            }
+            
         });
         snacksButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
