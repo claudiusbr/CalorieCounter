@@ -25,6 +25,7 @@ import java.awt.event.FocusEvent;
  * Add an option to add food titles to each meal;
  * Add finishing to the layout;
  */
+
 public class CalorieCounterFrame extends JFrame
 {
     //decided to use specific variables for buttons instead of array,

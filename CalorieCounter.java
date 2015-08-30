@@ -1,3 +1,4 @@
+import java.lang.annotation.*;
 import java.util.*;
 import java.io.FileNotFoundException;
 import java.io.File;
@@ -7,6 +8,18 @@ import javax.swing.JFrame;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+@Documented
+@interface ClassHeader {
+    String author();
+    String date();
+    String lastModified();
+}
+
+@ClassHeader (
+    author = "CBrasil",
+    date = "21/05/2015",
+    lastModified = "30/08/2015"
+)
 /**
  * Simple Calorie Counter
  * 07/06/15 - v1: linear calorie counter (deleted);
