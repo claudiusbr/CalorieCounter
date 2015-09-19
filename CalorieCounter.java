@@ -20,18 +20,6 @@ import java.awt.event.WindowEvent;
     date = "21/05/2015",
     lastModified = "30/08/2015"
 )
-/**
- * Simple Calorie Counter
- * 07/06/15 - v1: linear calorie counter (deleted);
- * 13/06/15 - v2: still linear; included inheritance and specialisation;
- * 14/06/15 - v3: changed from linear to multiple choice; Reduced number of subclasses and scrapped subclasses;
- * 24/06/15 - v4:  
- *  .1 - changed 'option' to string: trying to control exceptions by limiting value of  to characters '1,2,3,4' contained in a String;
- *  .2 - modified way of clearing totals from object references: now done by using the no argument constructor of class Food;
- *  .3 - array 'storage' no longer to be used to store values before saving. Printing values from instances of Food directly to save files instead.
- * 26/07/15 - v5: added GUI and modified app structure to accomodate a GUI.
- */
-
 public class CalorieCounter {
     protected static PrintWriter food;
     protected static Food breakfast = new Food(), lunch = new Food(), dinner = new Food(), snacks = new Food();

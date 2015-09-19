@@ -10,22 +10,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
 import java.awt.event.FocusEvent;
 
-/**
- * This class creates the frame and components of the Calorie Counter app.
- * 
- * to do:
- * Add this to Eclipse
- * Try to re-create the inner class, instead of using anonymous class for parameter passing on each ActionListener:
- *      - Initial trouble: I had initially an inner class that took a Food object as parameter, however this didn't
- *      work, due to Java passing parameters as value, not reference. It was causing the Reset button to fail, for
- *      some reason. A solution might be to implement a reset() method within the ActionListener implementing class,
- *      but how would I then make sure that each object would refer to its respective variable on the CalorieCounter
- *      class?
- * Add an option to save values by date;
- * Add an option to add food titles to each meal;
- * Add finishing to the layout;
- */
-
 public class CalorieCounterFrame extends JFrame
 {
     //decided to use specific variables for buttons instead of array,
