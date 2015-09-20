@@ -8,17 +8,10 @@ import javax.swing.JFrame;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-@Documented
-@interface ClassHeader {
-    String author();
-    String date();
-    String lastModified();
-}
-
 @ClassHeader (
     author = "CBrasil",
     date = "21/05/2015",
-    lastModified = "30/08/2015"
+    lastModified = "19/09/2015"
 )
 public class CalorieCounter {
     protected static PrintWriter food;

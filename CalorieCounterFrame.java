@@ -132,7 +132,7 @@ public class CalorieCounterFrame extends JFrame
             }
         });
         
-        /* un-comment if you want text fields to show as un-editable when not selected.
+
 
         breakfastValue.addFocusListener(bfTxtListener);
         breakfastValue.setEditable(false);
@@ -142,7 +142,6 @@ public class CalorieCounterFrame extends JFrame
         dinnerValue.setEditable(false);
         snacksValue.addFocusListener(snTxtListener);
         snacksValue.setEditable(false);
-        */
        
         resetButton.addActionListener(resetListener); 
     }
@@ -160,7 +159,6 @@ public class CalorieCounterFrame extends JFrame
         
         public void focusGained(FocusEvent e) {
             text.setEditable(true);
-            text.setText("");
         }
         
         public void focusLost(FocusEvent e) {
