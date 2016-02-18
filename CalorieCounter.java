@@ -8,21 +8,32 @@ import javax.swing.JFrame;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-@ClassHeader (
-    author = "CBrasil",
-    date = "21/05/2015",
-    lastModified = "19/09/2015"
-)
+/** 
+*    author = "CBrasil",
+*    date = "21/05/2015",
+*    lastModified = "19/09/2015"
+*/
 public class CalorieCounter {
     protected static PrintWriter food;
-    protected static Food breakfast = new Food(), lunch = new Food(), dinner = new Food(), snacks = new Food();
+
+    protected static Food breakfast = new Food(); 
+    protected static Food lunch = new Food();
+    protected static Food dinner = new Food();
+    protected static Food snacks = new Food();
+
     protected static Scanner data;
     protected static int total;
     
     public static void main(String[]args) throws FileNotFoundException {
         retrieveData();
-        total = breakfast.getTotal()+lunch.getTotal()+dinner.getTotal()+snacks.getTotal();
+	
+        total = breakfast.getTotal()
+		+lunch.getTotal()
+		+dinner.getTotal()
+		+snacks.getTotal();
+		
         JFrame frame = new CalorieCounterFrame("Calorie Counter");
+
         frame.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 try {
