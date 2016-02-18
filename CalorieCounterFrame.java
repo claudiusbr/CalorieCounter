@@ -45,7 +45,6 @@ public class CalorieCounterFrame extends JFrame
         GroupLayout layout = new GroupLayout(panel);
         layout.setAutoCreateGaps(true);
         layout.setAutoCreateContainerGaps(true);
-
         panel.setLayout(layout);
         
         addActionListeners();
