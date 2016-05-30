@@ -1,16 +1,36 @@
-/**
- * CalorieCounterFrame creates the frame and components of the Calorie Counter app.
- * 
- * to do:
- * Add this to Eclipse
- * Try to re-create the inner class, instead of using anonymous class for parameter passing on each ActionListener:
- *      - Initial trouble: I had initially an inner class that took a Food object as parameter, however this didn't
- *      work, due to Java passing parameters as value, not reference. It was causing the Reset button to fail, for
- *      some reason. A solution might be to implement a reset() method within the ActionListener implementing class,
- *      but how would I then make sure that each object would refer to its respective variable on the CalorieCounter
- *      class?
- * Add an option to save values by date;
- * Add an option to add food titles to each meal;
- * Add finishing to the layout;
- */
+ CalorieCounterFrame creates the frame and components of the Calorie Counter app.
+ 
+ to do:
+ re-factor:
+	- remove as much hardcoding as possible and try to make classes more
+	  independent, similar to what is done in separation of concerns. For
+	  example, rather than having CalorieCounter so heavily coupled with
+	  the frame, create another independent class which will handle all data
+	  saving and retrieving, then instantiate it directly into the frame
+	  to set the values for the buttons. Like:
+	  	DataHandler
+		attributes:
+			breakfast:Food
+			lunch:Food
+			dinner:Food
+			snacks:Food
+			total:Food
+		methods:
+			get/setBreakfast();
+			get/setLunch();
+			get/setDinner();
+			get/setSnacks();
+			getTotal();
+			retrieveData();
+			saveData();
+			resetTotals();
 
+ Try to re-create the inner class, instead of using anonymous class for parameter passing on each ActionListener:
+      - Initial trouble: I had initially an inner class that took a Food object as parameter, however this didn't
+      work, due to Java passing parameters as value, not reference. It was causing the Reset button to fail, for
+      some reason. A solution might be to implement a reset() method within the ActionListener implementing class,
+      but how would I then make sure that each object would refer to its respective variable on the CalorieCounter
+      class?
+ Add an option to save values by date;
+ Add an option to add food titles to each meal;
+ Add finishing to the layout;
