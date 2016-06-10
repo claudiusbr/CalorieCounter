@@ -100,44 +100,38 @@ public class CalorieCounterFrame extends JFrame
 		add(panel);
 	}
 	
-	/** calls the saveToFile() method for meals
-	 */
-	public void saveToFile() throws java.io.FileNotFoundException {
-		meals.saveToFile();
-	}
-	
 	/**
 	 * adds action and focus listener objects to the frame buttons.
 	 */
 	public void addActionListeners() {
 		breakfastButton.addActionListener((ActionEvent e) -> {
-				int value = Integer.parseInt(breakfastValue.getText());
-				meals.addBreakfast(value);
-				breakfastValue.setText("0");
-		breakfastLabel.setText("Breakfast: "+meals.getBreakfast());
-				totalLabel.setText("Total: "+meals.getTotal());
+			int value = Integer.parseInt(breakfastValue.getText());
+			meals.addBreakfast(value);
+			breakfastValue.setText("0");
+			breakfastLabel.setText("Breakfast: "+meals.getBreakfast());
+			totalLabel.setText("Total: "+meals.getTotal());
 			
 		});
 		lunchButton.addActionListener((ActionEvent e) -> {
-				int value = Integer.parseInt(lunchValue.getText());
-				meals.addLunch(value);
-				lunchValue.setText("0");
-		lunchLabel.setText("Lunch: "+meals.getLunch());
-				totalLabel.setText("Total: "+meals.getTotal());
+			int value = Integer.parseInt(lunchValue.getText());
+			meals.addLunch(value);
+			lunchValue.setText("0");
+			lunchLabel.setText("Lunch: "+meals.getLunch());
+			totalLabel.setText("Total: "+meals.getTotal());
 		});
-		dinnerButton.addActionListener((ActionEvent e) -> {
-				int value = Integer.parseInt(dinnerValue.getText());
-				meals.addDinner(value);
-				dinnerValue.setText("0");
-		dinnerLabel.setText("Dinner: "+meals.getDinner());
-				totalLabel.setText("Total: "+meals.getTotal());
+			dinnerButton.addActionListener((ActionEvent e) -> {
+			int value = Integer.parseInt(dinnerValue.getText());
+			meals.addDinner(value);
+			dinnerValue.setText("0");
+			dinnerLabel.setText("Dinner: "+meals.getDinner());
+			totalLabel.setText("Total: "+meals.getTotal());
 		});
-		snacksButton.addActionListener((ActionEvent e) -> {
-				int value = Integer.parseInt(snacksValue.getText());
-				meals.addSnacks(value);
-				snacksValue.setText("0");
-		snacksLabel.setText("Snacks: "+meals.getSnacks());
-				totalLabel.setText("Total: "+meals.getTotal());
+			snacksButton.addActionListener((ActionEvent e) -> {
+			int value = Integer.parseInt(snacksValue.getText());
+			meals.addSnacks(value);
+			snacksValue.setText("0");
+			snacksLabel.setText("Snacks: "+meals.getSnacks());
+			totalLabel.setText("Total: "+meals.getTotal());
 		});
 		
 		breakfastValue.addFocusListener(bfTxtListener);

@@ -35,6 +35,7 @@ public class MealMaker {
 	public void addBreakfast(int value) {
 		breakfast.add(value);
 		total+=value;
+		try { saveToFile(); } catch (FileNotFoundException ex) {}
 	}
 
 	public int getLunch() {
@@ -43,6 +44,7 @@ public class MealMaker {
 	public void addLunch(int value) {
 		lunch.add(value);
 		total+=value;
+		try { saveToFile(); } catch (FileNotFoundException ex) {}
 	}
 
 	public int getDinner() {
@@ -51,6 +53,7 @@ public class MealMaker {
 	public void addDinner(int value) {
 		dinner.add(value);
 		total+=value;
+		try { saveToFile(); } catch (FileNotFoundException ex) {}
 	}
 
 	public int getSnacks() {
@@ -59,6 +62,7 @@ public class MealMaker {
 	public void addSnacks(int value) {
 		snacks.add(value);
 		total+=value;
+		try { saveToFile(); } catch (FileNotFoundException ex) {}
 	}
 
 	public int getTotal() {
@@ -97,13 +101,12 @@ public class MealMaker {
 			food.print("0 0 0 0");
 			food.close();
 		}
-		
 		food = new PrintWriter("food.txt");
 		food.print(breakfast.getTotal()+" "+lunch.getTotal()+" "+dinner.getTotal()+" "+snacks.getTotal());
 		food.close();
-		}
+	}
 		
-		public void resetValues() throws FileNotFoundException {
+	public void resetValues() throws FileNotFoundException {
 		breakfast = new Food();
 		lunch = new Food();
 		dinner = new Food();
