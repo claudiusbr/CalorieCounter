@@ -181,9 +181,13 @@ public class CalorieCounterFrame extends JFrame
 		public void resetTextFields() {
 			totalLabel.setText("Total: "+Integer.toString(meals.getTotal()));
 			breakfastValue.setText("0");
+			breakfastLabel.setText("Breakfast: 0");
 			lunchValue.setText("0");
+			lunchLabel.setText("Lunch: 0");
 			dinnerValue.setText("0");
+			dinnerLabel.setText("Dinner: 0");
 			snacksValue.setText("0");
+			snacksLabel.setText("Snacks: 0");
 		}
 	}
 }
