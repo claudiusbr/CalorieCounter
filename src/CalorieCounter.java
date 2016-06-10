@@ -15,14 +15,16 @@ public class CalorieCounter {
 			
 		JFrame frame = new CalorieCounterFrame("Calorie Counter");
 
+		/* needs fixing
 		frame.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-			try {
-				saveToFile();
+				try {
+					frame.saveToFile();
+				} catch (FileNotFoundException ex) {
+
+				}
 			}
-			catch  (FileNotFoundException ex) {}
-			}
-		});
+		}); */
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}

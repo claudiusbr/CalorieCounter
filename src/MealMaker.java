@@ -1,3 +1,10 @@
+import java.lang.annotation.*;
+import java.util.*;
+import java.io.*;
+
+/** This class is responsible for creating the relevant meal
+ *  instances for the CalorieCounter
+ */
 public class MealMaker {
 	private Food breakfast = new Food(); 
 	private Food lunch = new Food();
@@ -10,12 +17,52 @@ public class MealMaker {
 	private int total;
 
 	public MealMaker() {
-		retrieveData();
+		try {
+			retrieveData();
+		} catch (FileNotFoundException e) {
+			
+		}
 		
 		total = breakfast.getTotal()
 			+lunch.getTotal()
 			+dinner.getTotal()
 			+snacks.getTotal();
+	}
+
+	public int getBreakfast() {
+		return breakfast.getTotal();
+	}
+	public void addBreakfast(int value) {
+		breakfast.add(value);
+		total+=value;
+	}
+
+	public int getLunch() {
+		return lunch.getTotal();
+	}
+	public void addLunch(int value) {
+		lunch.add(value);
+		total+=value;
+	}
+
+	public int getDinner() {
+		return dinner.getTotal();
+	}
+	public void addDinner(int value) {
+		dinner.add(value);
+		total+=value;
+	}
+
+	public int getSnacks() {
+		return snacks.getTotal();
+	}
+	public void addSnacks(int value) {
+		snacks.add(value);
+		total+=value;
+	}
+
+	public int getTotal() {
+		return total;
 	}
 
 	public void retrieveData() throws FileNotFoundException {
@@ -33,18 +80,18 @@ public class MealMaker {
 		
 		//populate array with values from file
 		for (int i = 0; data.hasNextInt() && i < storage.length; ++i) {
-		storage[i] = data.nextInt();
+			storage[i] = data.nextInt();
 		}
 		data.close();
 			  
 		//assign values to objects based on array
-		breakfast.setTotal(storage[0]);
-		lunch.setTotal(storage[1]);
-		dinner.setTotal(storage[2]);
-		snacks.setTotal(storage[3]);		
+		breakfast.add(storage[0]);
+		lunch.add(storage[1]);
+		dinner.add(storage[2]);
+		snacks.add(storage[3]);		
 	}
 
-	public static void saveToFile() throws FileNotFoundException {
+	public void saveToFile() throws FileNotFoundException {
 		if(!(new File("food.txt").exists())) {
 			food = new PrintWriter("food.txt");
 			food.print("0 0 0 0");
@@ -56,7 +103,7 @@ public class MealMaker {
 		food.close();
 		}
 		
-		public static void resetValues() throws FileNotFoundException {
+		public void resetValues() throws FileNotFoundException {
 		breakfast = new Food();
 		lunch = new Food();
 		dinner = new Food();

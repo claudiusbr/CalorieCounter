@@ -17,7 +17,7 @@ class Food {
      * Mutator method: adds value to calories.
      * @param newValue the value to be added.
      */
-    protected void setTotal(int newValue){
+    protected void add(int newValue) {
         this.totalCalories += newValue;
     }
     
