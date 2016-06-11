@@ -13,7 +13,7 @@ import java.awt.event.FocusEvent;
 public class CalorieCounterFrame extends JFrame
 {
 
-	private final int FRAME_WIDTH = 300, FRAME_HEIGHT = 300, FIELD_WIDTH = 2;
+	private final int FRAME_WIDTH = 350, FRAME_HEIGHT = 300, FIELD_WIDTH = 2;
 
 	//decided to use specific variables for buttons instead of array,
 	//so that the code is more self-documented
@@ -25,10 +25,10 @@ public class CalorieCounterFrame extends JFrame
 	
 	protected MealMaker meals = new MealMaker();
 
-	protected JTextField breakfastValue = new JTextField(Integer.toString(meals.getBreakfast()),FIELD_WIDTH);
-	protected JTextField lunchValue = new JTextField(Integer.toString(meals.getLunch()),FIELD_WIDTH);
-	protected JTextField dinnerValue = new JTextField(Integer.toString(meals.getDinner()),FIELD_WIDTH); 
-	protected JTextField snacksValue = new JTextField(Integer.toString(meals.getSnacks()),FIELD_WIDTH);
+	protected JTextField breakfastValue = new JTextField("0",FIELD_WIDTH);
+	protected JTextField lunchValue = new JTextField("0",FIELD_WIDTH);
+	protected JTextField dinnerValue = new JTextField("0",FIELD_WIDTH); 
+	protected JTextField snacksValue = new JTextField("0",FIELD_WIDTH);
 
 	private JLabel breakfastLabel = new JLabel("Breakfast: "+meals.getBreakfast());
 	private JLabel lunchLabel = new JLabel("Lunch: "+meals.getLunch());
