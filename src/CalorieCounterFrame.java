@@ -4,6 +4,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.GroupLayout;
+import javax.swing.SwingConstants;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +13,8 @@ import java.awt.event.FocusEvent;
 
 public class CalorieCounterFrame extends JFrame
 {
+
+	private MealMaker meals = new MealMaker();
 
 	private final int FRAME_WIDTH = 350, FRAME_HEIGHT = 300, FIELD_WIDTH = 2;
 
@@ -23,12 +26,10 @@ public class CalorieCounterFrame extends JFrame
 	private JButton snacksButton = new JButton("+");
 	private JButton resetButton = new JButton("Reset");
 	
-	protected MealMaker meals = new MealMaker();
-
-	protected JTextField breakfastValue = new JTextField("0",FIELD_WIDTH);
-	protected JTextField lunchValue = new JTextField("0",FIELD_WIDTH);
-	protected JTextField dinnerValue = new JTextField("0",FIELD_WIDTH); 
-	protected JTextField snacksValue = new JTextField("0",FIELD_WIDTH);
+	private JTextField breakfastText = new JTextField("0",FIELD_WIDTH);
+	private JTextField lunchText = new JTextField("0",FIELD_WIDTH);
+	private JTextField dinnerText = new JTextField("0",FIELD_WIDTH); 
+	private JTextField snacksText = new JTextField("0",FIELD_WIDTH);
 
 	private JLabel breakfastLabel = new JLabel("Breakfast: "+meals.getBreakfast());
 	private JLabel lunchLabel = new JLabel("Lunch: "+meals.getLunch());
@@ -38,24 +39,30 @@ public class CalorieCounterFrame extends JFrame
 
 	private ActionListener resetListener = new ResetListener();
 		
-	private FocusListener bfTxtListener = new TextListener(breakfastValue); 
-	private FocusListener lcTxtListener = new TextListener(lunchValue); 
-	private FocusListener dnrTxtListener = new TextListener(dinnerValue); 
-	private FocusListener snTxtListener = new TextListener(snacksValue);
+	private FocusListener bfTxtListener = new TextListener(breakfastText); 
+	private FocusListener lcTxtListener = new TextListener(lunchText); 
+	private FocusListener dnrTxtListener = new TextListener(dinnerText); 
+	private FocusListener snTxtListener = new TextListener(snacksText);
 	
-	public String test = "hello";
-
 	public CalorieCounterFrame(String title) {
+		// create frame
 		this.setTitle(title);
 		this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
+
+		//create panel and layout
 		JPanel panel = new JPanel();
 		GroupLayout layout = new GroupLayout(panel);
 		layout.setAutoCreateGaps(true);
 		layout.setAutoCreateContainerGaps(true);
 		panel.setLayout(layout);
 		
+		// add action listeners
 		addActionListeners();
-	
+
+		// make sure labels are of the same size
+		layout.linkSize(SwingConstants.VERTICAL,breakfastLabel,lunchLabel,dinnerLabel,snacksLabel);
+
+		// set components (buttons, labels, textfields) in a grid format
 		layout.setHorizontalGroup(
 			layout.createSequentialGroup()
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -64,10 +71,10 @@ public class CalorieCounterFrame extends JFrame
 					.addComponent(dinnerLabel)
 					.addComponent(snacksLabel))
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-					.addComponent(breakfastValue)
-					.addComponent(lunchValue)
-					.addComponent(dinnerValue)
-					.addComponent(snacksValue)
+					.addComponent(breakfastText)
+					.addComponent(lunchText)
+					.addComponent(dinnerText)
+					.addComponent(snacksText)
 					.addComponent(totalLabel))
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 					.addComponent(breakfastButton)
@@ -80,23 +87,25 @@ public class CalorieCounterFrame extends JFrame
 			layout.createSequentialGroup()
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
 					.addComponent(breakfastLabel)
-					.addComponent(breakfastValue)
+					.addComponent(breakfastText)
 					.addComponent(breakfastButton))
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
 					.addComponent(lunchLabel)
-					.addComponent(lunchValue)
+					.addComponent(lunchText)
 					.addComponent(lunchButton))
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
 					.addComponent(dinnerLabel)
-					.addComponent(dinnerValue)
+					.addComponent(dinnerText)
 					.addComponent(dinnerButton))
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
 					.addComponent(snacksLabel)
-					.addComponent(snacksValue)
+					.addComponent(snacksText)
 					.addComponent(snacksButton))
 				.addComponent(totalLabel)
 				.addComponent(resetButton)
 		);
+
+		// add the panel to CalorieCounterFrame
 		add(panel);
 	}
 	
@@ -105,43 +114,43 @@ public class CalorieCounterFrame extends JFrame
 	 */
 	public void addActionListeners() {
 		breakfastButton.addActionListener((ActionEvent e) -> {
-			int value = Integer.parseInt(breakfastValue.getText());
+			int value = Integer.parseInt(breakfastText.getText());
 			meals.addBreakfast(value);
-			breakfastValue.setText("0");
+			breakfastText.setText("0");
 			breakfastLabel.setText("Breakfast: "+meals.getBreakfast());
 			totalLabel.setText("Total: "+meals.getTotal());
 			
 		});
 		lunchButton.addActionListener((ActionEvent e) -> {
-			int value = Integer.parseInt(lunchValue.getText());
+			int value = Integer.parseInt(lunchText.getText());
 			meals.addLunch(value);
-			lunchValue.setText("0");
+			lunchText.setText("0");
 			lunchLabel.setText("Lunch: "+meals.getLunch());
 			totalLabel.setText("Total: "+meals.getTotal());
 		});
 			dinnerButton.addActionListener((ActionEvent e) -> {
-			int value = Integer.parseInt(dinnerValue.getText());
+			int value = Integer.parseInt(dinnerText.getText());
 			meals.addDinner(value);
-			dinnerValue.setText("0");
+			dinnerText.setText("0");
 			dinnerLabel.setText("Dinner: "+meals.getDinner());
 			totalLabel.setText("Total: "+meals.getTotal());
 		});
 			snacksButton.addActionListener((ActionEvent e) -> {
-			int value = Integer.parseInt(snacksValue.getText());
+			int value = Integer.parseInt(snacksText.getText());
 			meals.addSnacks(value);
-			snacksValue.setText("0");
+			snacksText.setText("0");
 			snacksLabel.setText("Snacks: "+meals.getSnacks());
 			totalLabel.setText("Total: "+meals.getTotal());
 		});
 		
-		breakfastValue.addFocusListener(bfTxtListener);
-		breakfastValue.setEditable(false);
-		lunchValue.addFocusListener(lcTxtListener);
-		lunchValue.setEditable(false);
-		dinnerValue.addFocusListener(dnrTxtListener);
-		dinnerValue.setEditable(false);
-		snacksValue.addFocusListener(snTxtListener);
-		snacksValue.setEditable(false);
+		breakfastText.addFocusListener(bfTxtListener);
+		breakfastText.setEditable(false);
+		lunchText.addFocusListener(lcTxtListener);
+		lunchText.setEditable(false);
+		dinnerText.addFocusListener(dnrTxtListener);
+		dinnerText.setEditable(false);
+		snacksText.addFocusListener(snTxtListener);
+		snacksText.setEditable(false);
 	   
 		resetButton.addActionListener(resetListener); 
 	}
@@ -158,6 +167,7 @@ public class CalorieCounterFrame extends JFrame
 		
 		public void focusGained(FocusEvent e) {
 			text.setEditable(true);
+			text.setText("");
 		}
 		
 		public void focusLost(FocusEvent e) {
@@ -180,13 +190,13 @@ public class CalorieCounterFrame extends JFrame
 		
 		public void resetTextFields() {
 			totalLabel.setText("Total: "+Integer.toString(meals.getTotal()));
-			breakfastValue.setText("0");
+			breakfastText.setText("0");
 			breakfastLabel.setText("Breakfast: 0");
-			lunchValue.setText("0");
+			lunchText.setText("0");
 			lunchLabel.setText("Lunch: 0");
-			dinnerValue.setText("0");
+			dinnerText.setText("0");
 			dinnerLabel.setText("Dinner: 0");
-			snacksValue.setText("0");
+			snacksText.setText("0");
 			snacksLabel.setText("Snacks: 0");
 		}
 	}
