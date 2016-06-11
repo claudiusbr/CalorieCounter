@@ -160,18 +160,22 @@ public class CalorieCounterFrame extends JFrame
 	 */
 	class TextListener implements FocusListener{
 		JTextField text;
-		
+		String temp = "";
 		public TextListener(JTextField text) {
 			this.text = text;
 		}
 		
 		public void focusGained(FocusEvent e) {
 			text.setEditable(true);
+			temp = text.getText();
 			text.setText("");
 		}
 		
 		public void focusLost(FocusEvent e) {
+			if (!text.getText().equals("")) temp = text.getText();
 			text.setEditable(false);
+			text.setText(temp);
+			temp = "";
 		}
 	}
 	
