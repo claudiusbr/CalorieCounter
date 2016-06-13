@@ -1,4 +1,8 @@
- to do:
- Add an option to save values by date;
- Add an option to add food titles to each meal;
- Add finishing to the layout;
+to do:
+Add an option to save values by date;
+- checkout the following classes:
+	https://docs.oracle.com/javase/7/docs/api/java/util/GregorianCalendar.html
+	https://docs.oracle.com/javase/8/docs/api/javax/swing/JComboBox.html
+	https://docs.oracle.com/javase/tutorial/uiswing/components/combobox.html
+Add an option to add food titles to each meal;
+Add finishing to the layout;
