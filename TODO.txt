@@ -1,4 +1,6 @@
 to do:
+Find a way to stop users entering non-numeric values (e.g. text) in the
+textfields - this seems to be causing a silent exception;
 Add an option to save values by date;
 - checkout the following classes:
 	https://docs.oracle.com/javase/7/docs/api/java/util/GregorianCalendar.html
