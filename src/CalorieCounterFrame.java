@@ -169,7 +169,7 @@ public class CalorieCounterFrame extends JFrame
 	 * numbers only, and that it is made up of at least one digit
 	 */
 	private boolean isNumber(String input) {
-		String reg = ".[0-9]*";
+		String reg = "[0-9][0-9]*";
 		Pattern p = Pattern.compile(reg);
 		return (Pattern.matches(reg,input));
 	}
