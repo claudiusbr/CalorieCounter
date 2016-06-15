@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
 import java.awt.event.FocusEvent;
 
+import java.util.regex.Pattern;
+
 public class CalorieCounterFrame extends JFrame
 {
 
@@ -114,33 +116,40 @@ public class CalorieCounterFrame extends JFrame
 	 */
 	public void addActionListeners() {
 		breakfastButton.addActionListener((ActionEvent e) -> {
-			int value = Integer.parseInt(breakfastText.getText());
-			meals.addBreakfast(value);
+			if (isNumber(breakfastText.getText())) {
+				int value = Integer.parseInt(breakfastText.getText());
+				meals.addBreakfast(value);
+				breakfastLabel.setText("Breakfast: "+meals.getBreakfast());
+				totalLabel.setText("Total: "+meals.getTotal());
+			}
 			breakfastText.setText("0");
-			breakfastLabel.setText("Breakfast: "+meals.getBreakfast());
-			totalLabel.setText("Total: "+meals.getTotal());
-			
 		});
 		lunchButton.addActionListener((ActionEvent e) -> {
-			int value = Integer.parseInt(lunchText.getText());
-			meals.addLunch(value);
+			if (isNumber(lunchText.getText())) {
+				int value = Integer.parseInt(lunchText.getText());
+				meals.addLunch(value);
+				lunchLabel.setText("Lunch: "+meals.getLunch());
+				totalLabel.setText("Total: "+meals.getTotal());
+			}
 			lunchText.setText("0");
-			lunchLabel.setText("Lunch: "+meals.getLunch());
-			totalLabel.setText("Total: "+meals.getTotal());
 		});
 			dinnerButton.addActionListener((ActionEvent e) -> {
-			int value = Integer.parseInt(dinnerText.getText());
-			meals.addDinner(value);
+			if (isNumber(dinnerText.getText())) {
+				int value = Integer.parseInt(dinnerText.getText());
+				meals.addDinner(value);
+				dinnerLabel.setText("Dinner: "+meals.getDinner());
+				totalLabel.setText("Total: "+meals.getTotal());
+			}
 			dinnerText.setText("0");
-			dinnerLabel.setText("Dinner: "+meals.getDinner());
-			totalLabel.setText("Total: "+meals.getTotal());
 		});
 			snacksButton.addActionListener((ActionEvent e) -> {
-			int value = Integer.parseInt(snacksText.getText());
-			meals.addSnacks(value);
+			if (isNumber(snacksText.getText())) {
+				int value = Integer.parseInt(snacksText.getText());
+				meals.addSnacks(value);
+				snacksLabel.setText("Snacks: "+meals.getSnacks());
+				totalLabel.setText("Total: "+meals.getTotal());
+			}
 			snacksText.setText("0");
-			snacksLabel.setText("Snacks: "+meals.getSnacks());
-			totalLabel.setText("Total: "+meals.getTotal());
 		});
 		
 		breakfastText.addFocusListener(bfTxtListener);
@@ -155,6 +164,16 @@ public class CalorieCounterFrame extends JFrame
 		resetButton.addActionListener(resetListener); 
 	}
 	
+	/** 
+	 * this method checks whether an input string is made up of
+	 * numbers only, and that it is made up of at least one digit
+	 */
+	private boolean isNumber(String input) {
+		String reg = ".[0-9]*";
+		Pattern p = Pattern.compile(reg);
+		return (Pattern.matches(reg,input));
+	}
+
 	/**
 	 * focus listener to change state of text field
 	 */
@@ -172,7 +191,7 @@ public class CalorieCounterFrame extends JFrame
 		}
 		
 		public void focusLost(FocusEvent e) {
-			if (!text.getText().equals("")) temp = text.getText();
+			if (isNumber(text.getText())) temp = text.getText();
 			text.setEditable(false);
 			text.setText(temp);
 			temp = "";
