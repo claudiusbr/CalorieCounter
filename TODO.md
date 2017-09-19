@@ -1,6 +1,12 @@
 To Do
 =====
 
+## REWRITE
+- but this time:
+  - model it first;
+  - use a database rather than text files;
+  - TDD.
+
 ## Add an option to save values by date:
 - checkout the following classes:
   [Gregorian Calendar](https://docs.oracle.com/javase/7/docs/api/java/util/GregorianCalendar.html)
