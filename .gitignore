@@ -56,3 +56,6 @@ doc/allclasses-frame.html
 doc/allclasses-noframe.html
 doc/constant-values.html
 doc/package-summary.html
+
+# maven
+target/

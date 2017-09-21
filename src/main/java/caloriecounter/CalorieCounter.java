@@ -1,3 +1,5 @@
+package caloriecounter;
+
 import java.lang.annotation.*;
 import java.util.*;
 import java.io.*;

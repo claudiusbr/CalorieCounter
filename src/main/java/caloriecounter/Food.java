@@ -1,3 +1,5 @@
+package caloriecounter;
+
 /**
  * This class is used to create the objects and instance variables required by
  * the CalorieCounter class.
