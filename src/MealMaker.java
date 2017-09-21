@@ -20,7 +20,7 @@ public class MealMaker {
         try {
             retrieveData();
         } catch (FileNotFoundException e) {
-            
+            e.printStackTrace();
         }
         
         total = breakfast.getTotal()
