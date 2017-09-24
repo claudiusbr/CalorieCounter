@@ -59,3 +59,7 @@ doc/package-summary.html
 
 # maven
 target/
+
+
+# this gets generated on import anyway
+*.iml
