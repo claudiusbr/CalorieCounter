@@ -1,10 +1,12 @@
-package caloriecounter;
+package old.caloriecounter;
 
 /**
+ * @deprecated as of 24/Sep/2017 TO BE REWRITTEN
  * This class is used to create the objects and instance variables required by
  * the CalorieCounter class.
  */
 
+@Deprecated
 class Food {
     private int totalCalories = 0;
     

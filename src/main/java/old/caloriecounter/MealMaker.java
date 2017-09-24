@@ -1,12 +1,14 @@
-package caloriecounter;
+package old.caloriecounter;
 
-import java.lang.annotation.*;
 import java.util.*;
 import java.io.*;
 
-/** This class is responsible for creating the relevant meal
+/**
+ *  @deprecated as of 24/Sep/2017 TO BE REWRITTEN
+ *  This class is responsible for creating the relevant meal
  *  instances for the CalorieCounter
  */
+@Deprecated
 public class MealMaker {
     private Food breakfast = new Food(); 
     private Food lunch = new Food();
