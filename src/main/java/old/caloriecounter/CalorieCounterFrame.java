@@ -1,4 +1,4 @@
-package caloriecounter;
+package old.caloriecounter;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -15,6 +15,7 @@ import java.awt.event.FocusEvent;
 
 import java.util.regex.Pattern;
 
+@Deprecated
 public class CalorieCounterFrame extends JFrame
 {
 
