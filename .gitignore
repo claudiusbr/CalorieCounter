@@ -63,3 +63,6 @@ target/
 
 # this gets generated on import anyway
 *.iml
+
+# this should have been ignored from the start
+workspace.xml
