@@ -14,7 +14,7 @@ public class CsvInputTest {
 
     @Test(timeout = DEFAULT_TIMEOUT )
     public void testGetContents(){
-        String mockLine = "300,200,100";
+        String mockLine = "John,01/02/2017,500,400,300,200,100";
         InputStream in = System.in;
         try {
             System.setIn(new ByteArrayInputStream((mockLine+"\r\n").getBytes()));
