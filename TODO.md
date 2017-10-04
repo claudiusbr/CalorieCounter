@@ -1,6 +1,13 @@
 To Do
 =====
 
+## For a connection with SQLite:
+- read up on the
+  [DataSource](https://docs.oracle.com/javase/8/docs/api/javax/sql/DataSource.html)
+  interface. It may be a good way to inject a dependency and make the connector
+  class more testable.
+
+
 ## REWRITE
 - but this time:
   - model it first;
